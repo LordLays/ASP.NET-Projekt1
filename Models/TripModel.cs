@@ -1,4 +1,6 @@
-﻿namespace WebApplication1.Models
+﻿using System.Text.Json;
+
+namespace WebApplication1.Models
 {
     public class TripModel
     {
@@ -8,5 +10,47 @@
         public string Place { get; set; }
         public DateTime Date { get; set; }
         public TimeSpan Duration { get; set; }
+
+        public TripModel(int id, string name, string? description, string place, DateTime date, TimeSpan duration)
+        {
+            Id = id;
+            Name = name;
+            Description = description;
+            Place = place;
+            Date = date;
+            Duration = duration;
+        }
+        public static void SaveTrips(List<TripModel> trips)
+        {
+            string tripsJson = JsonSerializer.Serialize(trips);
+            File.WriteAllText("trips.json", tripsJson);
+        }
+        public static List<TripModel> LoadTrips()
+        {
+            string tripsJson = File.ReadAllText("trips.json");
+            List<TripModel> trips = JsonSerializer.Deserialize<List<TripModel>>(tripsJson);
+            return trips;
+        }
+        public static List<TripModel> SampleTripList()
+        {
+            List<TripModel> trips = new List<TripModel>
+            {
+                new TripModel(1, "Trip to Paris", "Sightseeing", "Paris", new DateTime(2022, 7, 14), new TimeSpan(7, 0, 0, 0)),
+                new TripModel(2, "Trip to London", "Sightseeing", "London", new DateTime(2022, 8, 14), new TimeSpan(5, 0, 0, 0)),
+                new TripModel(3, "Trip to New York", "Sightseeing", "New York", new DateTime(2022, 9, 14), new TimeSpan(14, 0, 0, 0))
+            };
+            return trips;
+        }
+        public static List<TripModel> GetAllTrips()
+        {
+            if (File.Exists("trips.json"))
+            {
+                return LoadTrips();
+            }
+            else
+            {
+                return SampleTripList();
+            }
+        }
     }
 }
