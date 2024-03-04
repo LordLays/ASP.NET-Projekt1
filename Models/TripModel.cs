@@ -52,5 +52,27 @@ namespace WebApplication1.Models
                 return SampleTripList();
             }
         }
+        public static TripModel GetTripById(int id)
+        {
+            return GetAllTrips().FirstOrDefault(t => t.Id == id);
+        }
+        public static void AddTrip(TripModel trip)
+        {
+            List<TripModel> trips = GetAllTrips();
+            trips.Add(trip);
+        }
+        public static void UpdateTrip(TripModel trip)
+        {
+            List<TripModel> trips = GetAllTrips();
+            TripModel oldTrip = trips.FirstOrDefault(t => t.Id == trip.Id);
+            trips.Remove(oldTrip);
+            trips.Add(trip);
+        }
+        public static void DeleteTrip(int id)
+        {
+            List<TripModel> trips = GetAllTrips();
+            TripModel trip = trips.FirstOrDefault(t => t.Id == id);
+            trips.Remove(trip);
+        }
     }
 }
