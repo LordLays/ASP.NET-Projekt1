@@ -9,9 +9,9 @@ namespace WebApplication1.Controllers
         private readonly ILogger<TripController> _logger;
         private readonly IList<TripModel> _tripsList = TripModel.GetAllTrips();
         // GET: TripController
-        public ActionResult Index()
+        public Microsoft.AspNetCore.Mvc.IActionResult Index()
         {
-            return View();
+            return View(_tripsList);
         }
 
         // GET: TripController/Details/5
