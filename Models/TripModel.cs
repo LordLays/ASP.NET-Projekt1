@@ -8,10 +8,10 @@ namespace WebApplication1.Models
         public string Name { get; set; }
         public string? Description { get; set; }
         public string Place { get; set; }
-        public DateTime Date { get; set; }
+        public DateOnly Date { get; set; }
         public TimeSpan Duration { get; set; }
 
-        public TripModel(int id, string name, string? description, string place, DateTime date, TimeSpan duration)
+        public TripModel(int id, string name, string? description, string place, DateOnly date, TimeSpan duration)
         {
             Id = id;
             Name = name;
@@ -35,9 +35,9 @@ namespace WebApplication1.Models
         {
             List<TripModel> trips = new List<TripModel>
             {
-                new TripModel(1, "Trip to Paris", "Sightseeing", "Paris", new DateTime(2022, 7, 14), new TimeSpan(7, 0, 0, 0)),
-                new TripModel(2, "Trip to London", "Sightseeing", "London", new DateTime(2022, 8, 14), new TimeSpan(5, 0, 0, 0)),
-                new TripModel(3, "Trip to New York", "Sightseeing", "New York", new DateTime(2022, 9, 14), new TimeSpan(14, 0, 0, 0))
+                new TripModel(1, "Trip to Paris", "Sightseeing", "Paris", new DateOnly(2022, 7, 14), new TimeSpan(7, 0, 0, 0)),
+                new TripModel(2, "Trip to London", "Sightseeing", "London", new DateOnly(2022, 8, 14), new TimeSpan(5, 0, 0, 0)),
+                new TripModel(3, "Trip to New York", "Sightseeing", "New York", new DateOnly(2022, 9, 14), new TimeSpan(14, 0, 0, 0))
             };
             return trips;
         }
