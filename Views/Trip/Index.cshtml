@@ -1,39 +1,38 @@
 ﻿@model IEnumerable<WebApplication1.Models.TripModel>
 
 @{
-    ViewData["Title"] = "View";
+    ViewData["Title"] = "Zestawienie";
 }
 
-<h1>View</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div style="text-align: center">
+<h1>Zestawienie Wycieczek</h1>
+<img src="https://img.freepik.com/free-vector/outdoor-vector-road-trip-sea-coast-landscape-background-rock-nature-winding-rocky-pathway-ocean-water-stunning-empty-valley-with-sand-ground-summer-cloudy-empty-asphalt-route-illustration_107791-21470.jpg?size=338&ext=jpg&ga=GA1.1.1395880969.1709510400&semt=sph" alt="Road Image" />
+</div>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                Identyfikator
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Nazwa wycieczki
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                Opis
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Place)
+                Miejsce
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Date)
+                Data
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Duration)
+                Czas trwania
             </th>
             <th></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="align-items-center">
 @foreach (var item in Model) {
         <tr>
             <td>
@@ -52,14 +51,17 @@
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Duration)
+                @Html.DisplayFor(modelItem => item.Duration.Days) Dni @Html.DisplayFor(modelItem => item.Duration.Hours) Godzin @Html.DisplayFor(modelItem => item.Duration.Minutes) Minut
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <a class="link-info" asp-action="Details" asp-route-itemid="@item.Id">Szczegóły</a> |
+                <a class="link-info" asp-action="Edit" asp-route-itemid="@item.Id">Edytuj</a> |
+                <a class="link-danger" asp-action="Details" asp-route-itemid="@item.Id">Usuń</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<p>
+    <a class="btn btn-primary" asp-action="Create">Dodaj nową wycieczke</a>
+</p>
