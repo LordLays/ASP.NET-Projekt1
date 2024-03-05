@@ -7,9 +7,9 @@ namespace WebApplication1.Controllers
     public class TripController : Controller
     {
         private readonly ILogger<TripController> _logger;
-        private readonly IList<TripModel> _tripsList = TripModel.GetAllTrips();
+        private readonly List<TripModel> _tripsList = TripModel.GetAllTrips();
         // GET: TripController
-        public Microsoft.AspNetCore.Mvc.IActionResult Index()
+        public ActionResult Index()
         {
             return View(_tripsList);
         }
@@ -17,7 +17,7 @@ namespace WebApplication1.Controllers
         // GET: TripController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(TripModel.GetTripById(id));
         }
 
         // GET: TripController/Create
@@ -33,6 +33,9 @@ namespace WebApplication1.Controllers
         {
             try
             {
+                TripModel trip = new TripModel(_tripsList.Count + 1, collection["Name"], collection["Description"], collection["Place"], DateOnly.Parse(collection["Date"]), TimeSpan.Parse(collection["Duration"]));
+                _tripsList.Add(trip);
+                TripModel.SaveTrips(_tripsList);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -54,6 +57,14 @@ namespace WebApplication1.Controllers
         {
             try
             {
+                TripModel trip = TripModel.GetTripById(id);
+                trip.Name = collection["Name"];
+                trip.Description = collection["Description"];
+                trip.Place = collection["Place"];
+                trip.Date = DateOnly.Parse(collection["Date"]);
+                trip.Duration = TimeSpan.Parse(collection["Duration"]);
+                TripModel.UpdateTrip(trip);
+                TripModel.SaveTrips(_tripsList);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -63,6 +74,7 @@ namespace WebApplication1.Controllers
         }
 
         // GET: TripController/Delete/5
+        [HttpGet]
         public ActionResult Delete(int id)
         {
             return View();
@@ -75,6 +87,8 @@ namespace WebApplication1.Controllers
         {
             try
             {
+                _tripsList.Remove(TripModel.GetTripById(id));
+                TripModel.SaveTrips(_tripsList);
                 return RedirectToAction(nameof(Index));
             }
             catch
