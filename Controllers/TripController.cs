@@ -50,7 +50,7 @@ namespace WebApplication1.Controllers
             var trip = TripModel.GetTripById(itemId);
             if (trip == null)
             {
-                return NotFound(); // Możesz zwrócić odpowiedni widok lub kod błędu HTTP, np. NotFound()
+                return View("NotFound");
             }
 
             return View(trip);
