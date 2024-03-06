@@ -33,7 +33,7 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                TripModel trip = new TripModel(_tripsList.Count + 1, collection["Name"], collection["Description"], collection["Place"], DateOnly.Parse(collection["Date"]), TimeSpan.Parse(collection["Duration"]));
+                TripModel trip = new TripModel(_tripsList.Count, collection["Name"], collection["Description"], collection["Place"], DateOnly.Parse(collection["Date"]), TimeSpan.Parse(collection["Duration"]));
                 _tripsList.Add(trip);
                 TripModel.SaveTrips(_tripsList);
                 return RedirectToAction(nameof(Index));
