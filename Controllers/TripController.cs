@@ -15,9 +15,9 @@ namespace WebApplication1.Controllers
         }
 
         // GET: TripController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int itemId)
         {
-            return View(TripModel.GetTripById(id));
+            return View(TripModel.GetTripById(itemId));
         }
 
         // GET: TripController/Create
@@ -59,11 +59,11 @@ namespace WebApplication1.Controllers
         // POST: TripController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int itemId, IFormCollection collection)
         {
             try
             {
-                TripModel trip = TripModel.GetTripById(id);
+                TripModel trip = TripModel.GetTripById(itemId);
                 trip.Name = collection["Name"];
                 trip.Description = collection["Description"];
                 trip.Place = collection["Place"];
@@ -81,19 +81,19 @@ namespace WebApplication1.Controllers
 
         // GET: TripController/Delete/5
         [HttpGet]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int itemId)
         {
-            return View(TripModel.GetTripById(id));
+            return View(TripModel.GetTripById(itemId));
         }
 
         // POST: TripController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int itemId, IFormCollection collection)
         {
             try
             {
-                _tripsList.Remove(TripModel.GetTripById(id));
+                _tripsList.Remove(TripModel.GetTripById(itemId));
                 TripModel.SaveTrips(_tripsList);
                 return RedirectToAction(nameof(Index));
             }
