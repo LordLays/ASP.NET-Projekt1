@@ -7,7 +7,7 @@ namespace WebApplication1.Controllers
     public class TripController : Controller
     {
         private readonly ILogger<TripController> _logger;
-        private readonly List<TripModel> _tripsList = TripModel.GetAllTrips();
+        private List<TripModel> _tripsList = TripModel.GetAllTrips();
         // GET: TripController
         public ActionResult Index()
         {
@@ -97,7 +97,7 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                _tripsList.Remove(TripModel.GetTripById(itemId));
+                _tripsList.Remove(_tripsList[itemId]);
                 TripModel.SaveTrips(_tripsList);
                 return RedirectToAction(nameof(Index));
             }
