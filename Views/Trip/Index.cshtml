@@ -54,7 +54,6 @@
                 @Html.DisplayFor(modelItem => item.Duration.Days) Dni @Html.DisplayFor(modelItem => item.Duration.Hours) Godzin @Html.DisplayFor(modelItem => item.Duration.Minutes) Minut
             </td>
             <td>
-                <a class="link-info" asp-action="Details" asp-route-itemid="@item.Id">Szczegóły</a> |
                 <a class="link-info" asp-action="Edit" asp-route-itemid="@item.Id">Edytuj</a> |
                 <a class="link-danger" asp-action="Delete" asp-route-itemid="@item.Id">Usuń</a>
             </td>

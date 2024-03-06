@@ -14,12 +14,6 @@ namespace WebApplication1.Controllers
             return View(_tripsList);
         }
 
-        // GET: TripController/Details/5
-        public ActionResult Details(int itemId)
-        {
-            return View(TripModel.GetTripById(itemId));
-        }
-
         // GET: TripController/Create
         public ActionResult Create()
         {
