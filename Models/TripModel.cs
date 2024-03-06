@@ -10,7 +10,7 @@ namespace WebApplication1.Models
         public string Place { get; set; }
         public DateOnly Date { get; set; }
         public TimeSpan Duration { get; set; }
-
+        public TripModel() { }
         public TripModel(int id, string name, string? description, string place, DateOnly date, TimeSpan duration)
         {
             Id = id;
@@ -59,13 +59,6 @@ namespace WebApplication1.Models
         public static void AddTrip(TripModel trip)
         {
             List<TripModel> trips = GetAllTrips();
-            trips.Add(trip);
-        }
-        public static void UpdateTrip(TripModel trip)
-        {
-            List<TripModel> trips = GetAllTrips();
-            TripModel oldTrip = trips.FirstOrDefault(t => t.Id == trip.Id);
-            trips.Remove(oldTrip);
             trips.Add(trip);
         }
         public static void DeleteTrip(int id)

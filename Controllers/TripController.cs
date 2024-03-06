@@ -63,13 +63,17 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                TripModel trip = TripModel.GetTripById(itemId);
-                trip.Name = collection["Name"];
-                trip.Description = collection["Description"];
-                trip.Place = collection["Place"];
-                trip.Date = DateOnly.Parse(collection["Date"]);
-                trip.Duration = TimeSpan.Parse(collection["Duration"]);
-                TripModel.UpdateTrip(trip);
+                TripModel newTrip = new TripModel();
+                newTrip.Name = collection["Name"];
+                newTrip.Description = collection["Description"];
+                newTrip.Place = collection["Place"];
+                newTrip.Date = DateOnly.Parse(collection["Date"]);
+                newTrip.Duration = TimeSpan.Parse(collection["Duration"]);
+                _tripsList[itemId].Name = newTrip.Name;
+                _tripsList[itemId].Description = newTrip.Description;
+                _tripsList[itemId].Place = newTrip.Place;
+                _tripsList[itemId].Date = newTrip.Date;
+                _tripsList[itemId].Duration = newTrip.Duration;
                 TripModel.SaveTrips(_tripsList);
                 return RedirectToAction(nameof(Index));
             }
