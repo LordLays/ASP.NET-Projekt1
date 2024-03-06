@@ -35,9 +35,9 @@ namespace WebApplication1.Models
         {
             List<TripModel> trips = new List<TripModel>
             {
-                new TripModel(1, "Trip to Paris", "Sightseeing", "Paris", new DateOnly(2022, 7, 14), new TimeSpan(7, 0, 0, 0)),
-                new TripModel(2, "Trip to London", "Sightseeing", "London", new DateOnly(2022, 8, 14), new TimeSpan(5, 0, 0, 0)),
-                new TripModel(3, "Trip to New York", "Sightseeing", "New York", new DateOnly(2022, 9, 14), new TimeSpan(14, 0, 0, 0))
+                new TripModel(0, "Trip to Paris", "Sightseeing", "Paris", new DateOnly(2022, 7, 14), new TimeSpan(7, 0, 0, 0)),
+                new TripModel(1, "Trip to London", "Sightseeing", "London", new DateOnly(2022, 8, 14), new TimeSpan(5, 0, 0, 0)),
+                new TripModel(2, "Trip to New York", "Sightseeing", "New York", new DateOnly(2022, 9, 14), new TimeSpan(14, 0, 0, 0))
             };
             return trips;
         }

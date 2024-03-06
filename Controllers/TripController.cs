@@ -45,9 +45,15 @@ namespace WebApplication1.Controllers
         }
 
         // GET: TripController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int itemId)
         {
-            return View();
+            var trip = TripModel.GetTripById(itemId);
+            if (trip == null)
+            {
+                return View("NotFound");
+            }
+
+            return View(trip);
         }
 
         // POST: TripController/Edit/5
@@ -77,7 +83,7 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(TripModel.GetTripById(id));
         }
 
         // POST: TripController/Delete/5
