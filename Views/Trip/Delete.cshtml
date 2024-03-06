@@ -1,5 +1,13 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model WebApplication1.Models.TripModel;
 @{
+    ViewData["Title"] = "Usuń Wycieczke";
 }
+<link rel="stylesheet" type="text/css" href="style.css">
+<div class="title">
+    <h1>Usuń Wycieczke</h1>
+    <img src="https://thumbs.dreamstime.com/b/prohibition-signs-quarantine-no-travel-journey-vacation-trip-prohibition-signs-quarantine-no-travel-journey-vacation-175646627.jpg" alt="No trip" /><br />
+    <h3>@Model.Name</h3>
+    <button class="btn btn-danger" asp-action="Delete" asp-route-itemid="@Model.Id">Tak</button>
+    <a asp-action="Index" class="btn btn-primary">Nie</a>
+</div>
+

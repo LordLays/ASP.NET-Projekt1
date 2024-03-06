@@ -83,7 +83,7 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(TripModel.GetTripById(id));
         }
 
         // POST: TripController/Delete/5
