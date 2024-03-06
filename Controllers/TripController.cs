@@ -45,9 +45,15 @@ namespace WebApplication1.Controllers
         }
 
         // GET: TripController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int itemId)
         {
-            return View();
+            var trip = TripModel.GetTripById(itemId);
+            if (trip == null)
+            {
+                return NotFound(); // Możesz zwrócić odpowiedni widok lub kod błędu HTTP, np. NotFound()
+            }
+
+            return View(trip);
         }
 
         // POST: TripController/Edit/5

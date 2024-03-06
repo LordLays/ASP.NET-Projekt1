@@ -1,6 +1,42 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model WebApplication1.Models.TripModel;
 @{
+    ViewData["Title"] = "Edytuj Wycieczke";
 }
-<h1>Hello There</h1>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+<div class="title">
+    <h1>Dodaj Wycieczke</h1>
+    <img src="https://t4.ftcdn.net/jpg/04/26/63/63/360_F_426636349_rAGKwmQcbPZuWgaSpxOrByB94JPmEp6w.jpg" alt="Time to travel" />
+</div>
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Nazwa</label>
+        <input asp-for="Name" value="@Model.Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label">Opis</label>
+        <input asp-for="Description" value="@Model.Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Place" class="control-label">Miejsce</label>
+        <input asp-for="Place" value="@Model.Place" class="form-control" />
+        <span asp-validation-for="Place" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Date" class="control-label">Data</label>
+        <input asp-for="Date" value="@Model.Date" class="form-control" />
+        <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Duration" class="control-label">Czas trwania</label>
+        <input asp-for="Duration" value="@Model.Duration" class="form-control" />
+        <span asp-validation-for="Duration" class="text-danger"></span>
+    </div>
+    <div>
+        <input type="submit" value="Edytuj Wycieczke" class="btn btn-primary submit-button" />
+        <a asp-action="Index" class="btn btn-primary submit-button">Wróć do listy</a>
+    </div>
+</form>
