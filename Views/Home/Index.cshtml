@@ -1,8 +1,11 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "TripsDemo App";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<link rel="stylesheet" type="text/css" href="style.css">
+<div class="title">
+    <h1>Witaj w demo aplikacji wycieczek</h1>
+    <img src="https://www.hhhlibrary.org/sites/default/files/2021-01/Road%20Trip.jpg" alt="Road Trip Image" />
+    <h4>Aby skorzystać aplikacji naciśnij guzik "Przejdź do listy" lub "Trips" w górnym menu</h4>
+    <a asp-area="" asp-controller="Trip" asp-action="Index" class="btn btn-primary submit-button">Przejdź do listy</a>
 </div>
