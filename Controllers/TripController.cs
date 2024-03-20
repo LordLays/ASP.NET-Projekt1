@@ -6,7 +6,7 @@ namespace WebApplication1.Controllers
     public class TripController : Controller
     {
         private readonly ILogger<TripController> _logger;
-        private List<TripModel> _tripsList = TripModel.GetAllTrips();
+        private List<Trip> _tripsList = Trip.GetAllTrips();
         // GET: TripController
         public ActionResult Index()
         {
@@ -26,10 +26,10 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                TripModel trip = new TripModel(_tripsList.Count, collection["Name"], collection["Description"], collection["Place"], 
+                Trip trip = new Trip(_tripsList.Count, collection["Name"], collection["Place"], 
                     DateOnly.Parse(collection["Date"]), TimeSpan.Parse(collection["Duration"]));
                 _tripsList.Add(trip);
-                TripModel.SaveTrips(_tripsList);
+                Trip.SaveTrips(_tripsList);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -41,7 +41,7 @@ namespace WebApplication1.Controllers
         // GET: TripController/Edit/5
         public ActionResult Edit(int itemId)
         {
-            var trip = TripModel.GetTripById(itemId);
+            var trip = Trip.GetTripById(itemId);
             if (trip == null)
             {
                 return View("NotFound");
@@ -57,18 +57,16 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                TripModel newTrip = new TripModel();
+                Trip newTrip = new Trip();
                 newTrip.Name = collection["Name"];
-                newTrip.Description = collection["Description"];
                 newTrip.Place = collection["Place"];
                 newTrip.Date = DateOnly.Parse(collection["Date"]);
                 newTrip.Duration = TimeSpan.Parse(collection["Duration"]);
                 _tripsList[itemId].Name = newTrip.Name;
-                _tripsList[itemId].Description = newTrip.Description;
                 _tripsList[itemId].Place = newTrip.Place;
                 _tripsList[itemId].Date = newTrip.Date;
                 _tripsList[itemId].Duration = newTrip.Duration;
-                TripModel.SaveTrips(_tripsList);
+                Trip.SaveTrips(_tripsList);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -81,7 +79,7 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public ActionResult Delete(int itemId)
         {
-            return View(TripModel.GetTripById(itemId));
+            return View(Trip.GetTripById(itemId));
         }
 
         // POST: TripController/Delete/5
@@ -92,7 +90,7 @@ namespace WebApplication1.Controllers
             try
             {
                 _tripsList.Remove(_tripsList[itemId]);
-                TripModel.SaveTrips(_tripsList);
+                Trip.SaveTrips(_tripsList);
                 return RedirectToAction(nameof(Index));
             }
             catch
