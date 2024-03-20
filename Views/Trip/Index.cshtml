@@ -51,7 +51,8 @@
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Duration.Days) Dni @Html.DisplayFor(modelItem => item.Duration.Hours) Godzin @Html.DisplayFor(modelItem => item.Duration.Minutes) Minut
+                @Html.DisplayFor(modelItem => item.Duration.Days) Dni @Html.DisplayFor(modelItem => item.Duration.Hours) 
+                Godzin @Html.DisplayFor(modelItem => item.Duration.Minutes) Minut
             </td>
             <td>
                 <a class="link-info" asp-action="Edit" asp-route-itemid="@item.Id">Edytuj</a> |

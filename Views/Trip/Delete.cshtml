@@ -7,9 +7,13 @@
     <h1>Usuń Wycieczke</h1>
     <img src="https://thumbs.dreamstime.com/b/prohibition-signs-quarantine-no-travel-journey-vacation-trip-prohibition-signs-quarantine-no-travel-journey-vacation-175646627.jpg" alt="No trip" /><br />
     <h3>@Model.Name</h3>
-    <form asp-action="Delete" asp-route-itemid="@Model.Id" method="post">
+    <div class="container">
+        <h4>Czy na pewno chcesz usunąć wycieczke?</h4>
+        <form asp-action="Delete" asp-route-itemid="@Model.Id" method="post">
         <button type="submit" class="btn btn-danger">Tak</button>
-    </form>
-    <a asp-action="Index" class="btn btn-primary">Nie</a>
+        </form>
+        <a asp-action="Index" class="btn btn-primary">Nie</a>
+    </div>
 </div>
+
 
