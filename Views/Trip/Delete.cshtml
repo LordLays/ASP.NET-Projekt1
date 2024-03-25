@@ -1,4 +1,4 @@
-﻿@model WebApplication1.Models.TripModel;
+﻿@model WebApplication1.Models.Trip;
 @{
     ViewData["Title"] = "Usuń Wycieczke";
 }
@@ -9,7 +9,7 @@
     <h3>@Model.Name</h3>
     <div class="container">
         <h4>Czy na pewno chcesz usunąć wycieczke?</h4>
-        <form asp-action="Delete" asp-route-itemid="@Model.Id" method="post">
+        <form asp-action="Delete" asp-route-itemid="@Model.TripId" method="post">
         <button type="submit" class="btn btn-danger">Tak</button>
         </form>
         <a asp-action="Index" class="btn btn-primary">Nie</a>

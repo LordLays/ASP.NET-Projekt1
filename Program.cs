@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace WebApplication1
 {
     public class Program
@@ -8,9 +10,12 @@ namespace WebApplication1
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            builder.Services.AddDbContext<TripsDatabaseContext>(options =>
+                options.UseSqlite(connectionString));
             var app = builder.Build();
 
+            //App Settings
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplication1.Models.TripModel>
+﻿@model IEnumerable<WebApplication1.Models.Trip>
 
 @{
     ViewData["Title"] = "Zestawienie";
@@ -36,13 +36,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                @Html.DisplayFor(modelItem => item.TripId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Place)
@@ -55,8 +52,8 @@
                 Godzin @Html.DisplayFor(modelItem => item.Duration.Minutes) Minut
             </td>
             <td>
-                <a class="link-info" asp-action="Edit" asp-route-itemid="@item.Id">Edytuj</a> |
-                <a class="link-danger" asp-action="Delete" asp-route-itemid="@item.Id">Usuń</a>
+                <a class="link-info" asp-action="Edit" asp-route-itemid="@item.TripId">Edytuj</a> |
+                <a class="link-danger" asp-action="Delete" asp-route-itemid="@item.TripId">Usuń</a>
             </td>
         </tr>
 }
