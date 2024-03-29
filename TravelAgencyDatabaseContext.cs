@@ -79,6 +79,9 @@ namespace WebApplication1
 
             modelBuilder.Entity<HotelRoom>().HasKey(hr => hr.ID);
             modelBuilder.Entity<HotelRoom>()
+                .Property(o => o.Number)
+                .IsRequired();
+            modelBuilder.Entity<HotelRoom>()
                 .Property(o => o.Price)
                 .IsRequired()
                 .HasColumnType("decimal(18, 2)");
@@ -171,9 +174,6 @@ namespace WebApplication1
             modelBuilder.Entity<Review>()
                 .Property(o => o.Reviews)
                 .HasMaxLength(500);
-            modelBuilder.Entity<Review>()
-                .Property(o => o.Rating)
-                .IsRequired();
             modelBuilder.Entity<Review>()
                 .Property(o => o.Reviews)
                 .HasMaxLength(500);
