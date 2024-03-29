@@ -40,6 +40,7 @@ namespace WebApplication1
         public DbSet<Reservation> Reservations { get; set; }
 
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Hotel>().HasKey(h => h.ID);
@@ -68,16 +69,6 @@ namespace WebApplication1
             modelBuilder.Entity<Hotel>()
                 .Property(o => o.Description)
                 .HasMaxLength(500);
-
-            modelBuilder.Entity<Hotel>()
-                .HasMany(h => h.Rooms)
-                .WithOne()
-                .HasForeignKey(hr => hr.ID);
-
-            modelBuilder.Entity<Hotel>()
-                .HasMany(h => h.Reviews)
-                .WithOne()
-                .HasForeignKey(r => r.ID);
             modelBuilder.Entity<Hotel>()
                 .Property(o => o.ImageUrl)
                 .HasConversion(
@@ -104,6 +95,7 @@ namespace WebApplication1
             modelBuilder.Entity<HotelRoom>()
                 .Property(o => o.Description)
                 .HasMaxLength(250);
+
 
 
             modelBuilder.Entity<Ofert>().HasKey(o => o.ID);
@@ -137,10 +129,6 @@ namespace WebApplication1
                 .Property(o => o.EndDate)
                 .IsRequired()
                 .HasConversion(new DateOnlyConverter());
-            modelBuilder.Entity<Ofert>()
-                .HasOne(o => o.Hotel)
-                .WithMany()
-                .HasForeignKey(o => o.ID);
 
 
             modelBuilder.Entity<Customer>().HasKey(c => c.ID);
@@ -174,10 +162,6 @@ namespace WebApplication1
                 .Property(o => o.TotalPrice)
                 .IsRequired()
                 .HasColumnType("decimal(18, 2)");
-            modelBuilder.Entity<Reservation>()
-                .HasMany(r => r.BookedRoom)
-                .WithOne()
-                .HasForeignKey(hr => hr.ID);
 
 
             modelBuilder.Entity<Review>().HasKey(r => r.ID);
@@ -188,19 +172,34 @@ namespace WebApplication1
                 .Property(o => o.Reviews)
                 .HasMaxLength(500);
             modelBuilder.Entity<Review>()
-                .HasOne(r => r.Customer)
-                .WithMany()
-                .HasForeignKey(r => r.ID);
-            modelBuilder.Entity<Review>()
                 .Property(o => o.Rating)
                 .IsRequired();
             modelBuilder.Entity<Review>()
                 .Property(o => o.Reviews)
                 .HasMaxLength(500);
+
+
             modelBuilder.Entity<Review>()
                 .HasOne(r => r.Customer)
                 .WithMany()
-                .HasForeignKey(r => r.ID);
+                .HasForeignKey(r => r.CustomerID)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Review>()
+                .HasOne(r => r.Hotel)
+                .WithMany()
+                .HasForeignKey(r => r.HotelID)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Reservation>()
+                .HasMany(r => r.BookedRooms)
+                .WithMany(hr => hr.Reservations);
+
+            modelBuilder.Entity<HotelRoom>()
+                .HasOne(hr => hr.Hotel)
+                .WithMany(h => h.RoomList)
+                .HasForeignKey(hr => hr.HotelID)
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }
