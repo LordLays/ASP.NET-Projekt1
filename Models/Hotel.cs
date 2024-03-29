@@ -10,7 +10,7 @@
         public int StarRating { get; set; }
         public List<HotelRoom> Rooms { get; set; }
         public string? Description { get; set; }
-        public LinkedList<Reviews> Reviews { get; set; }
+        public LinkedList<Review> Reviews { get; set; }
         public double AverageCustomersRating { get; set; }
         public List<string>? ImageUrl { get; set; }
 

@@ -1,6 +1,6 @@
 ﻿namespace WebApplication1.Models
 {
-    public class Oferts
+    public class Ofert
     {
         public uint ID { get; set; }
         public string Country { get; set; }

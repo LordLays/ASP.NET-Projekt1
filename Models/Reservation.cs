@@ -8,14 +8,14 @@
         FullBoard,
         AllInclusive
     }
-    public class Details
+    public class Reservation
     {
         public uint ID { get; set; }
-        public Custormers Customer { get; set; }
-        public Oferts Ofert { get; set; }
+        public Customer Customer { get; set; }
+        public Ofert Ofert { get; set; }
         public List<HotelRoom> BookedRoom { get; set; }
         public int Travelers { get; set; }
-        public Enum Meal { get; set; }
+        public Meal Meal { get; set; }
         public decimal TotalPrice { get; set; }
     }
 }
