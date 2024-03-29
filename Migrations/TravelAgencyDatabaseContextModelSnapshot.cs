@@ -34,7 +34,7 @@ namespace WebApplication1.Migrations
 
                     b.HasIndex("ReservationsID");
 
-                    b.ToTable("HotelRoomReservation");
+                    b.ToTable("HotelRoomReservation", (string)null);
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Customer", b =>
@@ -67,7 +67,7 @@ namespace WebApplication1.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Hotel", b =>
@@ -113,7 +113,7 @@ namespace WebApplication1.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Hotels");
+                    b.ToTable("Hotels", (string)null);
                 });
 
             modelBuilder.Entity("WebApplication1.Models.HotelRoom", b =>
@@ -151,7 +151,7 @@ namespace WebApplication1.Migrations
 
                     b.HasIndex("HotelID");
 
-                    b.ToTable("HotelRooms");
+                    b.ToTable("HotelRooms", (string)null);
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Ofert", b =>
@@ -200,7 +200,7 @@ namespace WebApplication1.Migrations
 
                     b.HasIndex("HotelID");
 
-                    b.ToTable("Oferts");
+                    b.ToTable("Oferts", (string)null);
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Reservation", b =>
@@ -233,7 +233,7 @@ namespace WebApplication1.Migrations
 
                     b.HasIndex("OfertID");
 
-                    b.ToTable("Reservations");
+                    b.ToTable("Reservations", (string)null);
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Review", b =>
@@ -263,7 +263,7 @@ namespace WebApplication1.Migrations
 
                     b.HasIndex("HotelID");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Reviews", (string)null);
                 });
 
             modelBuilder.Entity("HotelRoomReservation", b =>
