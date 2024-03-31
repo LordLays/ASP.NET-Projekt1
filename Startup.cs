@@ -13,7 +13,7 @@ namespace WebApplication1
         {
             services.AddControllersWithViews();
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<TravelAgencyDatabaseContext>(options =>
+            services.AddDbContext<TravelAgencyContext>(options =>
                            options.UseSqlServer(connectionString));
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

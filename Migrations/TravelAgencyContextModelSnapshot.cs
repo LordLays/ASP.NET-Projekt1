@@ -10,8 +10,8 @@ using WebApplication1;
 
 namespace WebApplication1.Migrations
 {
-    [DbContext(typeof(TravelAgencyDatabaseContext))]
-    partial class TravelAgencyDatabaseContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(TravelAgencyContext))]
+    partial class TravelAgencyContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -34,7 +34,7 @@ namespace WebApplication1.Migrations
 
                     b.HasIndex("ReservationsID");
 
-                    b.ToTable("HotelRoomReservation", (string)null);
+                    b.ToTable("HotelRoomReservation");
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Customer", b =>
@@ -67,7 +67,7 @@ namespace WebApplication1.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Customers", (string)null);
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Hotel", b =>
@@ -113,7 +113,7 @@ namespace WebApplication1.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Hotels", (string)null);
+                    b.ToTable("Hotels");
                 });
 
             modelBuilder.Entity("WebApplication1.Models.HotelRoom", b =>
@@ -151,7 +151,7 @@ namespace WebApplication1.Migrations
 
                     b.HasIndex("HotelID");
 
-                    b.ToTable("HotelRooms", (string)null);
+                    b.ToTable("HotelRooms");
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Ofert", b =>
@@ -200,7 +200,7 @@ namespace WebApplication1.Migrations
 
                     b.HasIndex("HotelID");
 
-                    b.ToTable("Oferts", (string)null);
+                    b.ToTable("Oferts");
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Reservation", b =>
@@ -233,7 +233,7 @@ namespace WebApplication1.Migrations
 
                     b.HasIndex("OfertID");
 
-                    b.ToTable("Reservations", (string)null);
+                    b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Review", b =>
@@ -263,7 +263,7 @@ namespace WebApplication1.Migrations
 
                     b.HasIndex("HotelID");
 
-                    b.ToTable("Reviews", (string)null);
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("HotelRoomReservation", b =>

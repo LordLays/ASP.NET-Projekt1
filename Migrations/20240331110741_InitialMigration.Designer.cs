@@ -11,8 +11,8 @@ using WebApplication1;
 
 namespace WebApplication1.Migrations
 {
-    [DbContext(typeof(TravelAgencyDatabaseContext))]
-    [Migration("20240329181559_InitialMigration")]
+    [DbContext(typeof(TravelAgencyContext))]
+    [Migration("20240331110741_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />

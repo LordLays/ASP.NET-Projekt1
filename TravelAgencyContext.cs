@@ -4,12 +4,12 @@ using WebApplication1.Models;
 
 namespace WebApplication1
 {
-    public class TravelAgencyDatabaseContext : DbContext
+    public class TravelAgencyContext : DbContext
     {
 
         private readonly IConfiguration _configuration;
 
-        public TravelAgencyDatabaseContext(IConfiguration configuration)
+        public TravelAgencyContext(IConfiguration configuration)
         {
             _configuration = configuration;
         }
