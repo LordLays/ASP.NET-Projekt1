@@ -5,7 +5,7 @@
         void AddItem(T item);
         void DeleteItem(int id);
         T GetById(int id);
-        IQueryable<T> GetQueryable();
+        IQueryable<T> GetAll();
         void UpdateItem(T item);
     }
 }

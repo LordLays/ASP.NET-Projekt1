@@ -16,10 +16,7 @@ namespace WebApplication1
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // Pobierz connectionString z pliku appsettings.json
             var connectionString = _configuration.GetConnectionString("DefaultConnection");
-
-            // Skonfiguruj kontekst bazy danych
             optionsBuilder.UseSqlServer(connectionString);
         }
 

@@ -1,6 +1,5 @@
 ﻿namespace WebApplication1.Models
 {
-    //Generate enum for Meal
     public enum Meal
     {
         Breakfast,

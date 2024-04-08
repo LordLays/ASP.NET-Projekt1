@@ -24,7 +24,7 @@ namespace WebApplication1.Repository
         {
             return _context.Reviews.Find(id);
         }
-        public IQueryable<Review> GetQueryable()
+        public IQueryable<Review> GetAll()
         {
             return _context.Reviews;
         }

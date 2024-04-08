@@ -24,7 +24,7 @@ namespace WebApplication1.Repository
         {
             return _context.HotelRooms.Find(id);
         }
-        public IQueryable<HotelRoom> GetQueryable()
+        public IQueryable<HotelRoom> GetAll()
         {
             return _context.HotelRooms;
         }

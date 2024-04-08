@@ -24,7 +24,7 @@ namespace WebApplication1.Repository
         {
             return _context.Customers.Find(id);
         }
-        public IQueryable<Customer> GetQueryable()
+        public IQueryable<Customer> GetAll()
         {
             return _context.Customers;
         }

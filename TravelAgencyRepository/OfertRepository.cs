@@ -24,7 +24,7 @@ namespace WebApplication1.Repository
         {
             return _context.Oferts.Find(id);
         }
-        public IQueryable<Ofert> GetQueryable()
+        public IQueryable<Ofert> GetAll()
         {
             return _context.Oferts;
         }
