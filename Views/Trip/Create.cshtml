@@ -1,37 +1,6 @@
-﻿@model WebApplication1.Models.Trip
-
-@{
-    ViewData["Title"] = "Dodaj Wycieczke";
-}
-<link rel="stylesheet" type="text/css" href="style.css">
+﻿<link rel="stylesheet" type="text/css" href="style.css">
 <div class="title">
 <h1>Dodaj Wycieczke</h1>
 <img src="https://www.shutterstock.com/image-vector/go-road-trip-vector-illustration-260nw-624096107.jpg" alt="Go to Trip" />
 </div>
 
-<form asp-action="Create">
-    <div class="form-group">
-        <label asp-for="Name" class="control-label">Nazwa</label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Place" class="control-label">Miejsce</label>
-        <input asp-for="Place" class="form-control" />
-        <span asp-validation-for="Place" class="text-danger"></span>
-     </div>
-    <div class="form-group">
-        <label asp-for="Date" class="control-label">Data</label>
-        <input asp-for="Date" class="form-control" />
-        <span asp-validation-for="Date" class="text-danger"></span>
-     </div>
-     <div class="form-group">
-        <label asp-for="Duration" class="control-label">Czas trwania</label>
-        <input asp-for="Duration" class="form-control" />
-        <span asp-validation-for="Duration" class="text-danger"></span>
-     </div>
-     <div>
-        <input type="submit" value="Dodaj Wycieczke" class="btn btn-primary submit-button" />
-        <a asp-action="Index" class="btn btn-primary submit-button">Wróć do listy</a>
-     </div>
-</form>

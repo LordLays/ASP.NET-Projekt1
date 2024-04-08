@@ -4,7 +4,6 @@ namespace WebApplication1
 {
     public class Startup
     {
-        //Crate Startup class
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -14,8 +13,8 @@ namespace WebApplication1
         {
             services.AddControllersWithViews();
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<TripsDatabaseContext>(options =>
-                           options.UseSqlite(connectionString));
+            services.AddDbContext<TravelAgencyContext>(options =>
+                           options.UseSqlServer(connectionString));
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -39,6 +38,5 @@ namespace WebApplication1
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
-
     }
 }
