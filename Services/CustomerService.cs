@@ -14,5 +14,17 @@ namespace WebApplication1.Services
         {
             return CustomerRepository.GetAll().Where(c => c.Surname == surname).ToList();
         }
+        public void AddCustomer(Customer customer)
+        {
+            CustomerRepository.AddItem(customer);
+        }
+        public void UpdateCustomer(Customer customer)
+        {
+            CustomerRepository.UpdateItem(customer);
+        }
+        public void DeleteCustomer(int id)
+        {
+            CustomerRepository.DeleteItem(id);
+        }
     }
 }

@@ -10,5 +10,17 @@ namespace WebApplication1.Services
         {
             return ReservationRepository.GetAll().Where(r => r.Meal == meal).ToList();
         }
+        public void AddReservation(Reservation reservation)
+        {
+            ReservationRepository.AddItem(reservation);
+        }
+        public void UpdateReservation(Reservation reservation)
+        {
+            ReservationRepository.UpdateItem(reservation);
+        }
+        public void DeleteReservation(int id)
+        {
+            ReservationRepository.DeleteItem(id);
+        }
     }
 }

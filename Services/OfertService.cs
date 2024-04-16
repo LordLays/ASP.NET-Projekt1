@@ -71,5 +71,17 @@ namespace WebApplication1.Services
         {
             oferts.Sort((o1, o2) => o2.AvailableSeats.CompareTo(o1.AvailableSeats));
         }
+        public void AddOfert(Ofert ofert)
+        {
+            OfertRepository.AddItem(ofert);
+        }
+        public void UpdateOfert(Ofert ofert)
+        {
+            OfertRepository.UpdateItem(ofert);
+        }
+        public void DeleteOfert(int id)
+        {
+            OfertRepository.DeleteItem(id);
+        }
     }
 }

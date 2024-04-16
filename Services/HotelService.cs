@@ -50,5 +50,17 @@ namespace WebApplication1.Services
         {
             hotels.Sort((h1, h2) => h2.AverageCustomersRating.CompareTo(h1.AverageCustomersRating));
         }
+        public void AddHotel(Hotel hotel)
+        {
+            HotelRepository.AddItem(hotel);
+        }
+        public void UpdateHotel(Hotel hotel)
+        {
+            HotelRepository.UpdateItem(hotel);
+        }
+        public void DeleteHotel(int id)
+        {
+            HotelRepository.DeleteItem(id);
+        }
     }
 }

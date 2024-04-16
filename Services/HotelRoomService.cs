@@ -30,5 +30,17 @@ namespace WebApplication1.Services
         {
             hotelRooms.Sort((r1, r2) => r2.Price.CompareTo(r1.Price));
         }
+        public void AddHotelRoom(HotelRoom hotelRoom)
+        {
+            HotelRoomRepository.AddItem(hotelRoom);
+        }
+        public void UpdateHotelRoom(HotelRoom hotelRoom)
+        {
+            HotelRoomRepository.UpdateItem(hotelRoom);
+        }
+        public void DeleteHotelRoom(int id)
+        {
+            HotelRoomRepository.DeleteItem(id);
+        }
     }
 }
