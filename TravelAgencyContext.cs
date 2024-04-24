@@ -96,14 +96,6 @@ namespace WebApplication1
 
             modelBuilder.Entity<Ofert>().HasKey(o => o.IDOfert);
             modelBuilder.Entity<Ofert>()
-                .Property(o => o.Country)
-                .IsRequired()
-                .HasMaxLength(100);
-            modelBuilder.Entity<Ofert>()
-                .Property(o => o.City)
-                .IsRequired()
-                .HasMaxLength(100);
-            modelBuilder.Entity<Ofert>()
                 .Property(o => o.TakeOffPlace)
                 .IsRequired()
                 .HasMaxLength(100);

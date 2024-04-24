@@ -23,8 +23,6 @@
     public class Ofert
     {
         public uint IDOfert { get; set; }
-        public string Country { get; set; }
-        public string City { get; set; }
         public uint? HotelID { get; set; }
         public DateOnly StartDate { get; set; }
         public DateOnly EndDate { get; set; }
