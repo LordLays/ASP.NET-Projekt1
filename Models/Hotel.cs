@@ -2,7 +2,7 @@
 {
     public class Hotel
     {
-        public uint ID { get; set; }
+        public uint IDHotel { get; set; }
         public string Name { get; set; }
         public string City { get; set; }
         public string Country { get; set; }

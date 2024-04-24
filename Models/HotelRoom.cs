@@ -12,13 +12,12 @@
     }
     public class HotelRoom
     {
-        public uint ID { get; set; }
+        public uint IDHotelRoom { get; set; }
         public uint HotelID { get; set; }
         public uint Number { get; set; }
         public TypeRoom Type { get; set; }
         public string? Description { get; set; }
         public uint Capacity { get; set; }
-        public decimal Price { get; set; }
         public bool Available { get; set; }
 
         public virtual Hotel Hotel { get; set; }
