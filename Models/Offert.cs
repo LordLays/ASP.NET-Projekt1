@@ -20,7 +20,7 @@
         Luxury,
         Celebrity
     }
-    public class Ofert
+    public class Offert
     {
         public uint IDOfert { get; set; }
         public uint? HotelID { get; set; }

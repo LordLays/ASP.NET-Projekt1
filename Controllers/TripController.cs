@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Models;
+using WebApplication1.Services;
 
 namespace WebApplication1.Controllers
 {
@@ -17,5 +18,12 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+        // GET: TripController/Customer/Create
+        public ActionResult CustomerShow(CustomerService service)
+        {
+            var list = service.GetAll();
+            return View("Customer/Show", list);
+        }
+
     }
 }

@@ -30,7 +30,7 @@ namespace WebApplication1
         }
 
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<Ofert> Oferts { get; set; }
+        public DbSet<Offert> Oferts { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<HotelRoom> HotelRooms { get; set; }
@@ -94,26 +94,26 @@ namespace WebApplication1
 
 
 
-            modelBuilder.Entity<Ofert>().HasKey(o => o.IDOfert);
-            modelBuilder.Entity<Ofert>()
+            modelBuilder.Entity<Offert>().HasKey(o => o.IDOfert);
+            modelBuilder.Entity<Offert>()
                 .Property(o => o.TakeOffPlace)
                 .IsRequired()
                 .HasMaxLength(100);
-            modelBuilder.Entity<Ofert>()
+            modelBuilder.Entity<Offert>()
                 .Property(o => o.AvailableSeats)
                 .IsRequired();
-            modelBuilder.Entity<Ofert>()
+            modelBuilder.Entity<Offert>()
                 .Property(o => o.Description)
                 .HasMaxLength(500);
-            modelBuilder.Entity<Ofert>()
+            modelBuilder.Entity<Offert>()
                 .Property(o => o.TotalPrice)
                 .IsRequired()
                 .HasColumnType("decimal(18, 2)");
-            modelBuilder.Entity<Ofert>()
+            modelBuilder.Entity<Offert>()
                 .Property(o => o.StartDate)
                 .IsRequired()
                 .HasConversion(new DateOnlyConverter());
-            modelBuilder.Entity<Ofert>()
+            modelBuilder.Entity<Offert>()
                 .Property(o => o.EndDate)
                 .IsRequired()
                 .HasConversion(new DateOnlyConverter());
@@ -157,7 +157,7 @@ namespace WebApplication1
                 .IsRequired()
                 .HasMaxLength(100);
 
-            modelBuilder.Entity<Ofert>()
+            modelBuilder.Entity<Offert>()
                 .HasMany(o => o.Tags)
                 .WithMany(t => t.Hotels);
 

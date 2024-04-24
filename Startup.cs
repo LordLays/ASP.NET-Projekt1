@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using WebApplication1.Models;
+using WebApplication1.ViewModels;
 
 namespace WebApplication1
 {
@@ -15,6 +18,8 @@ namespace WebApplication1
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<TravelAgencyContext>(options =>
                            options.UseSqlServer(connectionString));
+
+            services.AddAutoMapper(typeof(Startup));
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

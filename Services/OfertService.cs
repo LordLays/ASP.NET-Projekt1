@@ -5,8 +5,8 @@ namespace WebApplication1.Services
 {
     public class OfertService
     {
-        private readonly ITravelAgencyRepository<Ofert> OfertRepository;
-        public List<Ofert> SearchOfert(string? hotelName, DateOnly? startDate, DateOnly? endDate, string? takeOffPlace, int? availableSeats)
+        private readonly ITravelAgencyRepository<Offert> OfertRepository;
+        public List<Offert> SearchOfert(string? hotelName, DateOnly? startDate, DateOnly? endDate, string? takeOffPlace, int? availableSeats)
         {
             if (hotelName != null && startDate != null && endDate != null && takeOffPlace != null && availableSeats != null)
             {
@@ -55,27 +55,27 @@ namespace WebApplication1.Services
                 return OfertRepository.GetAll().Where(o => o.AvailableSeats >= availableSeats).ToList();
             }
         }
-        public void SortByPriceASC(List<Ofert> oferts)
+        public void SortByPriceASC(List<Offert> oferts)
         {
-            oferts.Sort((o1, o2) => o1.Price.CompareTo(o2.Price));
+            oferts.Sort((o1, o2) => o1.TotalPrice.CompareTo(o2.TotalPrice));
         }
-        public void SortByPriceDESC(List<Ofert> oferts)
+        public void SortByPriceDESC(List<Offert> oferts)
         {
-            oferts.Sort((o1, o2) => o2.Price.CompareTo(o1.Price));
+            oferts.Sort((o1, o2) => o2.TotalPrice.CompareTo(o1.TotalPrice));
         }
-        public void SortByAvailableSeatsASC(List<Ofert> oferts)
+        public void SortByAvailableSeatsASC(List<Offert> oferts)
         {
             oferts.Sort((o1, o2) => o1.AvailableSeats.CompareTo(o2.AvailableSeats));
         }
-        public void SortByAvailableSeatsDESC(List<Ofert> oferts)
+        public void SortByAvailableSeatsDESC(List<Offert> oferts)
         {
             oferts.Sort((o1, o2) => o2.AvailableSeats.CompareTo(o1.AvailableSeats));
         }
-        public void AddOfert(Ofert ofert)
+        public void AddOfert(Offert ofert)
         {
             OfertRepository.AddItem(ofert);
         }
-        public void UpdateOfert(Ofert ofert)
+        public void UpdateOfert(Offert ofert)
         {
             OfertRepository.UpdateItem(ofert);
         }

@@ -5,7 +5,7 @@
         public uint IDTag { get; set; }
         public string Name { get; set; }
 
-        public virtual List<Ofert> Hotels { get; set; }
+        public virtual List<Offert> Hotels { get; set; }
 
     }
 }

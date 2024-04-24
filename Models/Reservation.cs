@@ -7,7 +7,7 @@
         public uint OfertID { get; set; }
 
         public virtual Customer Customer { get; set; }
-        public virtual Ofert Ofert { get; set; }
+        public virtual Offert Ofert { get; set; }
         public virtual List<HotelRoom> BookedRooms { get; set; }
     }
 }
