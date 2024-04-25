@@ -30,7 +30,7 @@ namespace WebApplication1
         }
 
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<Ofert> Oferts { get; set; }
+        public DbSet<Offert> Oferts { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<HotelRoom> HotelRooms { get; set; }
@@ -40,7 +40,7 @@ namespace WebApplication1
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Hotel>().HasKey(h => h.ID);
+            modelBuilder.Entity<Hotel>().HasKey(h => h.IDHotel);
             modelBuilder.Entity<Hotel>()
                 .Property(o => o.Name)
                 .IsRequired()
@@ -74,14 +74,10 @@ namespace WebApplication1
                  );
 
 
-            modelBuilder.Entity<HotelRoom>().HasKey(hr => hr.ID);
+            modelBuilder.Entity<HotelRoom>().HasKey(hr => hr.IDHotelRoom);
             modelBuilder.Entity<HotelRoom>()
                 .Property(o => o.Number)
                 .IsRequired();
-            modelBuilder.Entity<HotelRoom>()
-                .Property(o => o.Price)
-                .IsRequired()
-                .HasColumnType("decimal(18, 2)");
             modelBuilder.Entity<HotelRoom>()
                 .Property(o => o.Type)
                 .IsRequired()
@@ -98,40 +94,32 @@ namespace WebApplication1
 
 
 
-            modelBuilder.Entity<Ofert>().HasKey(o => o.ID);
-            modelBuilder.Entity<Ofert>()
-                .Property(o => o.Country)
-                .IsRequired()
-                .HasMaxLength(100);
-            modelBuilder.Entity<Ofert>()
-                .Property(o => o.City)
-                .IsRequired()
-                .HasMaxLength(100);
-            modelBuilder.Entity<Ofert>()
+            modelBuilder.Entity<Offert>().HasKey(o => o.IDOfert);
+            modelBuilder.Entity<Offert>()
                 .Property(o => o.TakeOffPlace)
                 .IsRequired()
                 .HasMaxLength(100);
-            modelBuilder.Entity<Ofert>()
+            modelBuilder.Entity<Offert>()
                 .Property(o => o.AvailableSeats)
                 .IsRequired();
-            modelBuilder.Entity<Ofert>()
+            modelBuilder.Entity<Offert>()
                 .Property(o => o.Description)
                 .HasMaxLength(500);
-            modelBuilder.Entity<Ofert>()
-                .Property(o => o.Price)
+            modelBuilder.Entity<Offert>()
+                .Property(o => o.TotalPrice)
                 .IsRequired()
                 .HasColumnType("decimal(18, 2)");
-            modelBuilder.Entity<Ofert>()
+            modelBuilder.Entity<Offert>()
                 .Property(o => o.StartDate)
                 .IsRequired()
                 .HasConversion(new DateOnlyConverter());
-            modelBuilder.Entity<Ofert>()
+            modelBuilder.Entity<Offert>()
                 .Property(o => o.EndDate)
                 .IsRequired()
                 .HasConversion(new DateOnlyConverter());
 
 
-            modelBuilder.Entity<Customer>().HasKey(c => c.ID);
+            modelBuilder.Entity<Customer>().HasKey(c => c.IDCustomer);
             modelBuilder.Entity<Customer>()
                 .Property(o => o.Name)
                 .IsRequired()
@@ -150,21 +138,9 @@ namespace WebApplication1
                 .HasMaxLength(20);
 
 
-            modelBuilder.Entity<Reservation>().HasKey(r => r.ID);
-            modelBuilder.Entity<Reservation>()
-                .Property(o => o.Travelers)
-                .IsRequired();
-            modelBuilder.Entity<Reservation>()
-                .Property(o => o.Meal)
-                .IsRequired()
-                .HasConversion(new EnumToStringConverter<Meal>()); ;
-            modelBuilder.Entity<Reservation>()
-                .Property(o => o.TotalPrice)
-                .IsRequired()
-                .HasColumnType("decimal(18, 2)");
+            modelBuilder.Entity<Reservation>().HasKey(r => r.IDReservation);
 
-
-            modelBuilder.Entity<Review>().HasKey(r => r.ID);
+            modelBuilder.Entity<Review>().HasKey(r => r.IDReview);
             modelBuilder.Entity<Review>()
                 .Property(o => o.Rating)
                 .IsRequired();
@@ -175,6 +151,15 @@ namespace WebApplication1
                 .Property(o => o.Reviews)
                 .HasMaxLength(500);
 
+            modelBuilder.Entity<Tag>().HasKey(t => t.IDTag);
+            modelBuilder.Entity<Tag>()
+                .Property(o => o.Name)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            modelBuilder.Entity<Offert>()
+                .HasMany(o => o.Tags)
+                .WithMany(t => t.Hotels);
 
             modelBuilder.Entity<Review>()
                 .HasOne(r => r.Customer)

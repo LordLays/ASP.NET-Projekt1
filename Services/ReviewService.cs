@@ -18,5 +18,17 @@ namespace WebApplication1.Services
         {
             reviews.Sort((r1, r2) => r2.Rating.CompareTo(r1.Rating));
         }
+        public void AddReview(Review review)
+        {
+            ReviewRepository.AddItem(review);
+        }
+        public void UpdateReview(Review review)
+        {
+            ReviewRepository.UpdateItem(review);
+        }
+        public void DeleteReview(int id)
+        {
+            ReviewRepository.DeleteItem(id);
+        }
     }
 }

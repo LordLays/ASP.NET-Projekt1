@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Windows.Input;
 
 namespace WebApplication1.Models
 {
     public class Customer
     {
-        public uint ID { get; set; }
+        public uint IDCustomer { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         [EmailAddress]

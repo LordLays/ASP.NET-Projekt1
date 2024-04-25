@@ -1,20 +1,13 @@
 ﻿namespace WebApplication1.Models
 {
-    public enum Meal
-    {
-        Breakfast,
-        HalfBoard,
-        FullBoard,
-        AllInclusive
-    }
     public class Reservation
     {
-        public uint ID { get; set; }
-        public Customer Customer { get; set; }
-        public Ofert Ofert { get; set; }
-        public List<HotelRoom> BookedRooms { get; set; }
-        public int Travelers { get; set; }
-        public Meal Meal { get; set; }
-        public decimal TotalPrice { get; set; }
+        public uint IDReservation { get; set; }
+        public uint CustomerID { get; set; }
+        public uint OfertID { get; set; }
+
+        public virtual Customer Customer { get; set; }
+        public virtual Offert Ofert { get; set; }
+        public virtual List<HotelRoom> BookedRooms { get; set; }
     }
 }

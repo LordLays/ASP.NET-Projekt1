@@ -1,4 +1,5 @@
-﻿using WebApplication1.Models;
+﻿using System.Collections.Generic;
+using WebApplication1.Models;
 using WebApplication1.Repository;
 
 namespace WebApplication1.Services
@@ -13,6 +14,26 @@ namespace WebApplication1.Services
         public List<Customer> GetBySurname(string surname)
         {
             return CustomerRepository.GetAll().Where(c => c.Surname == surname).ToList();
+        }
+        public List<Customer> GetAll()
+        {
+            if (CustomerRepository.GetAll().ToList() == null)
+            {
+                return new List<Customer>();
+            }
+            return CustomerRepository.GetAll().ToList();
+        }
+        public void AddCustomer(Customer customer)
+        {
+            CustomerRepository.AddItem(customer);
+        }
+        public void UpdateCustomer(Customer customer)
+        {
+            CustomerRepository.UpdateItem(customer);
+        }
+        public void DeleteCustomer(int id)
+        {
+            CustomerRepository.DeleteItem(id);
         }
     }
 }
