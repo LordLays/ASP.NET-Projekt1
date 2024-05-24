@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
+using WebApplication1.Validation;
 using WebApplication1.ViewModels;
 
 namespace WebApplication1
@@ -20,6 +22,16 @@ namespace WebApplication1
                            options.UseSqlServer(connectionString));
 
             services.AddAutoMapper(typeof(Startup));
+            services.AddRazorPages();
+            services.AddServerSideBlazor();
+
+            services.AddScoped<IValidator<Customer>, CustomerValidation>();
+            services.AddScoped<IValidator<Review>, ReviewValidation>();
+            services.AddScoped<IValidator<Reservation>, ReservationValidation>();
+            services.AddScoped<IValidator<Hotel>, HotelValidation>();
+            services.AddScoped<IValidator<HotelRoom>, HotelRoomValidation>();
+            services.AddScoped<IValidator<Offert>, OffertValidation>();
+            services.AddScoped<IValidator<Tag>, TagValidation>();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -41,6 +53,7 @@ namespace WebApplication1
                 endpoints.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapBlazorHub();
             });
         }
     }

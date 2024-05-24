@@ -1,0 +1,22 @@
+﻿@*
+
+*@
+@{
+}
+
+@using (Html.BeginForm("Add", "Customer", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" class="form-control" id="Name" name="Name" placeholder="Name">
+    </div>
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" id="Email" name="Email" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <label for="Phone">Phone</label>
+        <input type="text" class="form-control" id="Phone" name="Phone" placeholder="Phone">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+}
