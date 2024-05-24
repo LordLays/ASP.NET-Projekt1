@@ -18,11 +18,16 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
-        // GET: TripController/Customer/Create
+        // GET: TripController/Customer/Show
         public ActionResult CustomerShow(CustomerService service)
         {
             var list = service.GetAll();
             return View("Customer/Show", list);
+        }
+        // GET: TripController/Customer/Add
+        public ActionResult CustomerAdd(CustomerService service)
+        {
+            return View("Customer/Add");
         }
 
     }
