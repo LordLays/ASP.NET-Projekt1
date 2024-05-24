@@ -147,9 +147,6 @@ namespace WebApplication1
             modelBuilder.Entity<Review>()
                 .Property(o => o.Reviews)
                 .HasMaxLength(500);
-            modelBuilder.Entity<Review>()
-                .Property(o => o.Reviews)
-                .HasMaxLength(500);
 
             modelBuilder.Entity<Tag>().HasKey(t => t.IDTag);
             modelBuilder.Entity<Tag>()

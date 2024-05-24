@@ -1,0 +1,44 @@
+﻿@page "/customer/add"
+
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Components.Forms
+@using WebApplication1.Models
+
+
+<h3>Add Customer</h3>
+<EditForm class="form-group" Model="@customer" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label class="form-group" for="Name">Name:</label>
+        <InputText @bind-Value="customer.Name" id="Name" class="form-group" />
+    </div>
+
+    <div>
+        <label for="Surname">Surname:</label>
+        <InputText @bind-Value="customer.Surname" id="Surname" class="form-group" />
+    </div>
+
+    <div>
+        <label class ="form-group" for="Email">Email:</label>
+        <InputText @bind-Value="customer.Email" id="Email" class="form-group" />
+        <ValidationMessage For="@(() => customer.Email)" />
+    </div>
+
+    <div>
+        <label class="form-group" for="Phone">Phone:</label>
+        <InputText @bind-Value="customer.Phone" id="Phone" class="form-group" />
+    </div>
+
+    <button class="form-group" type="submit">Submit</button>
+</EditForm>
+
+@code {
+    private Customer customer = new Customer();
+
+    private void HandleValidSubmit()
+    {
+        Console.WriteLine($"Submitted Customer Details:\nID: {customer.IDCustomer}\nName: {customer.Name}\nSurname: {customer.Surname}\nEmail: {customer.Email}\nPhone: {customer.Phone}");
+    }
+}
